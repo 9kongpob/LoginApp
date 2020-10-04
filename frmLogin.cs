@@ -16,17 +16,21 @@ namespace LoginApp
         public frmLogin()
         {
             InitializeComponent();
+            this.AcceptButton = btnLogin;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string connectionString = null;
             SqlConnection cnn;
-            connectionString = @"Data Source=DESKTOP-2IN1SGU\SQLEXPRESS;Integrated Security=True;Connect Timeout=600;
-                                Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            connectionString = @"Data Source=DESKTOP-2IN1SGU\SQLEXPRESS;Initial Catalog=Login_database;
+                                Integrated Security=True;Connect Timeout=600;
+                                Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;
+                                MultiSubnetFailover=False";
+
             cnn = new SqlConnection(connectionString);
-            string query = "Select * form tbl_Login where username = '" +txtUsername.Text.Trim()+"' and password = '" +txtPassword.Text.Trim()+"'";
-            /*SqlDataAdapter sda = new SqlDataAdapter(query, cnn);
+            string query = "Select * from tbl_Login where username = '" +txtUsername.Text.Trim()+"' and password = '" +txtPassword.Text.Trim()+"'";
+            SqlDataAdapter sda = new SqlDataAdapter(query, cnn);
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);
 
@@ -39,7 +43,7 @@ namespace LoginApp
             else
             {
                 MessageBox.Show("Check your username and password");
-            }*/
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -56,7 +60,7 @@ namespace LoginApp
         {
             string connectionString = null;
             SqlConnection cnn;
-            connectionString = @"Data Source=DESKTOP-2IN1S2GU\SQLEXPRESS;Integrated Security=True;Connect Timeout=600;
+            connectionString = @"Data Source=DESKTOP-2IN1SGU\SQLEXPRESS;Integrated Security=True;Connect Timeout=600;
                                 Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             cnn = new SqlConnection(connectionString);
             try
